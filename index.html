@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>baillie.dev</title>
+
+    <style>
+body {
+  background: black;
+  color: white;
+  font-family: monospace;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 1.0rem;
+}
+
+header h1 {
+  max-width: 800px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+}
+
+a {
+  color: #00db00;
+}
+a:visited {
+  color: #00db00;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cursor {
+    animation: blink 1s step-start infinite;
+}
+
+.fade {
+  transition: opacity 1s;
+  opacity: 0;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><span id="typing-effect">baillie.dev</span><span class="cursor">█</span></h1>
+    </header>
+
+    <main>
+      <div class="fade" id="inquiries">inquiries: <a id="inq" href="mailto:spam@baillie.dev">no bots allowed</a></div>
+
+      <div class="fade" id="personal">personal: <a href="https://nigelbaillie.me">https://nigelbaillie.me</a></div>
+    </main>
+
+  <footer>
+    <p>&copy; 2024 baillie.dev LLC. All rights reserved.</p>
+  </footer>
+
+    <script type="module">
+      const span = document.getElementById("typing-effect");
+      const text = span.textContent;
+      span.textContent = '';
+      let index = 0;
+
+      function type() {
+          if (index < text.length) {
+              span.textContent += text[index];
+              index++;
+              setTimeout(type, 100);  // Adjust speed here
+          }
+      }
+
+      type();
+
+      const inq = document.getElementById("inq");
+      let a = '';
+      a += '\x6e\x69\x67\x65\x6c';
+      a += '\x40\x62\x61\x69\x6c\x6c\x69\x65\x2e\x64\x65\x76';
+
+      inq.textContent = a;
+      inq.href = `\x6d\x61\x69\x6c\x74\x6f\x3a${a}`;
+
+      const inquiries = document.getElementById("inquiries");
+      setTimeout(() => inquiries.style.opacity = "1", 1500);
+
+      const personal = document.getElementById("personal");
+      setTimeout(() => personal.style.opacity = "1", 2400);
+    </script>
+  </body>
+</html>
+
